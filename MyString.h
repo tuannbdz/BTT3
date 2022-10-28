@@ -8,9 +8,8 @@ class MyString
 public:
 	int length();
 	char* subString(int, int);
-	char* insert(int, char*);
-	char* operator+(const MyString&);
+	char* insert(int, const char*);
+	char* operator+(MyString&);
 	friend istream& operator>>(istream&, MyString&);
-	friend ostream& operator<<(ostream&, MyString&);
+	friend ostream& operator<<(ostream&, const MyString&);
 };
-
