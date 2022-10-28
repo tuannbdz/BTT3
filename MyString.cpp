@@ -4,7 +4,38 @@ int MyString::length() {
 	return n;
 }
 
+char* MyString::insert(int pos, const char* strToInsert)
+{
+	if (pos > n || pos < 0)
+	{
+		return NULL;
+	}
+
+	int lenInsert = 0;
+
+	while (strToInsert[lenInsert])
+		++lenInsert;
+
+	int len = lenInsert + n + 1;
+	char* insertedStr = new char[len];
+
+	for (int i = 0; i < pos; ++i)
+		insertedStr[i] = this->c[i];
+
+	for (int i = pos; i < pos + lenInsert; ++i)
+		insertedStr[i] = strToInsert[i - pos];
+
+	for (int i = pos + lenInsert; i < len - 1; ++i)
+		insertedStr[i] = this->c[i - lenInsert];
+	insertedStr[len - 1] = '\0';
+
+	delete[] c;
+	this->c = insertedStr;
+	return c;
+}
+
 char* MyString::subString(int pos, int num) {
+	if (pos >= n || pos < 0 || pos + num > n) return NULL;
 	char* sub = new char[num + 1];
 	for (int i = 0; i < num; i++) {
 		sub[i] = c[pos + i];
