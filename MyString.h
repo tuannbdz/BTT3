@@ -11,6 +11,6 @@ public:
 	char* insert(int, char*);
 	char* operator+(const MyString&);
 	friend istream& operator>>(istream&, MyString&);
-	friend ostream& operator<<(ostream&, MyString&);
+	friend ostream& operator<<(ostream&, const MyString&);
 };
 
